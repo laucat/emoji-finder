@@ -23,6 +23,11 @@ const removeClass = (el, oldClass) => {
     if (typeTimeout) window.clearTimeout(typeTimeout);
 
     if (value) typeTimeout = delay(matchKeyword(value), TYPE_INTERVAL);
+    
+    //have to reset the value in the input before something something
+    if (typeTiemout) window.clearTimeout(typeTimeout);
+    resetOldEmojis(prevFilter);
+    if (value) typeTimeout = delay(matchKeyword(value), TYPE_INTERVAL);
   }, false);
 
   const matchKeyword = (value) => {
@@ -58,7 +63,14 @@ const removeClass = (el, oldClass) => {
 
 
   // 1. Set variable for old emojis
+  const prevFilter = document.getElementsByClassName('visible');
   // 2. Remove class: visible
+  const resetOldEmojis = (value) => {
+    for (const prev of value) {
+      removeClass(prev, 'visible');
+    }
+  };
+  resetOldEmojis(prevFilter);
 
   // Remove class: filtering from siteContainer when input is cleared
 })();
