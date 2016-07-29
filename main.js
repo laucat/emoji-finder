@@ -117,10 +117,10 @@ const removeAllElements = elements => {
   }
 
   // Looping through array of matched emojis
-  const setMatchedEmojiVisible = ({/* destructuring - the keys of the objects passed in here! */}) => {
+  const setMatchedEmojiVisible = ({emoji, keywords/* destructuring - the keys of the objects passed in here! */}) => {
     // Getting the link in index.html that corresponds to each array item
-    const emojiItem = document.querySelector(`[title="${/* what would you pass in here for it to work? */}"]`);
-
+    const emojiItem = document.querySelector(`[title="${keywords[0]/* what would you pass in here for it to work? */}"]`);
+console.log(emoji + ' ' + keywords);
     // If we successfully grabbed the link from index.html
     if (emojiItem) {
       // Add a visible class to this emoji
