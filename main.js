@@ -39,8 +39,16 @@ const removeClass = (el, oldClass) => {
     // Loop through emoji array
       // 1. Find <li /> in markup that matches each emoji
       // 2. Add class: visible
-
+      
+      for (const emoji of matchedEmojiTitles) {
+        const emojiItem = document.querySelector(`[title="${emoji}"`);
+        
+        if(emojiItem) {
+          addClass(emojiItem.parentElement,'visible');
+        }
+      }
     // Add class: filtering to siteContainer to show results!
+    addClass(siteContainer,'filtering');
   }
 
   const filterByKeyword = (value, obj) => {
