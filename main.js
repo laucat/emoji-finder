@@ -15,6 +15,32 @@
         typeTimeout = delay(matchKeyword(value), TYPE_INTERVAL);
       }
     },false);
+    
+  const matchKeyword = (value) => {
+    // 1. Compare value against emojis
+    // 2. Verify that we got emojis based off the value
+    // 3. Add matched emojis to matched Emojis
+    
+    let matchedEmojiTitles = [];
+    
+    const matchedObjects = 
+    EMOJIS.filter(filterByKeyword.bin(this, value));
+     
+     if (matchedObjects.length == 0) return;
+     matchedObjects.map((obj)=> {
+       matchedEmojiTitles.push(obj.keywords[0]);
+     });
+    
+    
+  }
+  
+  const filterByKeyword = (value, obj) => {
+    console.log(value, obj);
+    return obj.keywords.some((keyword) => {
+      return value === keyword;
+      
+    });
+  }
 
   const delay = (func, delay) => {
     window.setTimeout(func, delay);
